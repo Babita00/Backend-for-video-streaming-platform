@@ -1,5 +1,6 @@
 import { asyncHandler } from "../utils/asyncHandler";
 import { User } from "../models/user.model.js";
+import { ApiResponse } from "../utils/apiResponse";
 
 const logoutUser = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
@@ -13,8 +14,11 @@ const logoutUser = asyncHandler(async (req, res) => {
     secure: true,
   };
 
-  res.clearCookie("token", options); // Clear the token cookie
-  res.status(200).json({ message: "User logged out successfully" }); // Send response
+  return res
+    .status(200)
+    .clearCookie("accessToken", options)
+    .clearCookie("refrehToken", options) // Clear the token cookie
+    .json(new ApiResponse(200, {}, "User logged out successfully"));
 });
 
 export { logoutUser };
