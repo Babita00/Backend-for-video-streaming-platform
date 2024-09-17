@@ -12,7 +12,7 @@ const uploadOnCloudinary = async (localFilePath) => {
     //upload the file in cloudinary
     const response = await cloudinary.uploader.upload("localFilePath", {
       resource_type: "auto",
-      public_id: "olympic_flag",
+      public_id: "profile_image",
     });
     console.log("File is uploaed in Cloudinary", response.url);
     console.log("response is:", response);
