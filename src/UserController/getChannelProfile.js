@@ -1,4 +1,5 @@
 import { ApiError } from "../utils/APIerror";
+import { ApiResponse } from "../utils/apiResponse";
 import { asyncHandler } from "../utils/asyncHandler";
 
 const getUserChannelProfile = asyncHandler(async (req, res) => {
@@ -62,4 +63,13 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
       },
     },
   ]);
+  if (!channel?.length) {
+    throw new ApiError(400, "Channel does not exist");
+  }
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(200, channel[0], "User channel is fetched successfully")
+    );
 });
+export { getUserChannelProfile };
