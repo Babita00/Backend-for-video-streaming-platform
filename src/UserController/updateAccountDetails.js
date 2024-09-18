@@ -8,7 +8,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
   if (!fullname || !email || !username) {
     throw new ApiError(400, "All fields are required");
   }
-  const user = User.findByIdAndUpdate(
+  const user = await User.findByIdAndUpdate(
     req.user?._id,
     {
       $set: {
