@@ -1,8 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { ApiError } from "../utils/ApiError.js";
+import { ApiError } from "../utils/APIerror.js";
 import { User } from "../models/user.model.js";
 import { ApiResponse } from "../utils/apiResponse.js";
-
 //user login
 const loginUser = asyncHandler(async (req, res) => {
   //get data from user
