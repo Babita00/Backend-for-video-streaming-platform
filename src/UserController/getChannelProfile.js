@@ -59,7 +59,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
         ChannelIsSubscribedToCount: 1,
         isSubscribed: 1,
         // avatar: 1,
-        // coberImage: 1,
+        // coverImage: 1,
       },
     },
   ]);
